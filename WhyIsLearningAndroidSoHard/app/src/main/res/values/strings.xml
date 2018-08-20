@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WhyIsLearningAndroidSoHard</string>
+    <string name="journal_default_title">Title</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="home">Home</string>
+    <string name="user_account">User Account</string>
+    <string name="log_out">Log Out</string>
+    <string name="facebook_app_id">1983735488353209</string>
+    <string name="dev_localhost">http://127.0.0.1:8080</string>
+</resources>

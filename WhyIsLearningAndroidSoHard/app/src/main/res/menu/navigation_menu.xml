@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/account"
+        android:icon="@mipmap/baseline_person_black_24"
+        android:title="My Account"/>
+
+    <item android:id="@+id/promotion"
+        android:icon="@mipmap/baseline_shopping_basket_black_24"
+        android:title="Latest Promotions"/>
+
+    <item android:id="@+id/store_locator"
+        android:icon="@mipmap/baseline_location_on_black_24"
+        android:title="Store Locator"/>
+
+    <item android:id="@+id/parking"
+        android:icon="@mipmap/baseline_local_parking_black_24"
+        android:title="Parking Assistance"/>
+
+    <item android:id="@+id/settings"
+        android:icon="@mipmap/baseline_settings_black_24"
+        android:title="My Settings"/>
+
+    <item android:id="@+id/logout"
+        android:icon="@mipmap/baseline_exit_to_app_black_24"
+        android:title="Log Out"/>
+
+</menu>
