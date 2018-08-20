@@ -15,11 +15,11 @@
         >
 
         <ImageView
-            android:src="@drawable/pic"
+            android:src="@drawable/shopping_mall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="50dp" />
+            android:scaleType="fitXY"
+            android:layout_marginBottom="85dp" />
 
         <RelativeLayout
             android:id="@+id/invited"
@@ -30,32 +30,23 @@
 
 
             <TextView
-                android:text="You're invited!"
+                android:text="Skyview Mall  "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
+                android:gravity="right"
                 android:textSize="45sp"
                 android:background="#009688"/>
-
-
-            <ImageButton
-                android:id="@+id/buttonNext"
-                android:layout_width="51dp"
-                android:layout_height="42dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                app:srcCompat="@android:drawable/ic_menu_send" />
-
 
         </RelativeLayout>
 
         <TextView
-            android:text="Bonfire at the beach"
+            android:text="Your one shopping destination"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:layout_above="@id/invited"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:background="#009688"/>
 
 

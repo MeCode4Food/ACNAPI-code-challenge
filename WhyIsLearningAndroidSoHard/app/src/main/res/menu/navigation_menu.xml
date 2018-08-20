@@ -13,6 +13,10 @@
         android:icon="@mipmap/baseline_location_on_black_24"
         android:title="Store Locator"/>
 
+    <item android:id="@+id/redemption"
+        android:icon="@mipmap/baseline_card_giftcard_black_24"
+        android:title="Redeem Points"/>
+
     <item android:id="@+id/parking"
         android:icon="@mipmap/baseline_local_parking_black_24"
         android:title="Parking Assistance"/>

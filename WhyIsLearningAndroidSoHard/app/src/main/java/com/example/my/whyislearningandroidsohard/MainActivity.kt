@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
         mToolbar = findViewById(R.id.nav_action_header)
         mToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
 
-        buttonNext.setOnClickListener({ _ -> openActivity2()})
-
         setSupportActionBar(nav_action_header as Toolbar)
 
         drawerLayout.addDrawerListener(mToggle)
@@ -44,10 +42,34 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
 
         return when(id){
             R.id.home -> consume{ navigateToHome() }
+            R.id.promotion -> consume{ navigateToPromotions() }
+            R.id.store_locator -> consume{ navigateToStoreLocator() }
+            R.id.redemption -> consume{ navigateToRedemption() }
+            R.id.parking -> consume{ navigateToParking() }
             R.id.settings -> consume{ navigateToSettings() }
             R.id.account -> consume{ navigateToAccount() }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun navigateToRedemption() {
+        val redemptionIntent = Intent(this, RedemptionActivity::class.java)
+        startActivity(redemptionIntent)
+    }
+
+    private fun navigateToParking() {
+        val parkingIntent = Intent(this, ParkingActivity::class.java)
+        startActivity(parkingIntent)
+    }
+
+    private fun navigateToStoreLocator() {
+        val storeLocatorIntent = Intent(this, StoreLocatorActivity::class.java)
+        startActivity(storeLocatorIntent)
+    }
+
+    private fun navigateToPromotions() {
+        val promotionIntent = Intent(this, PromotionsActivity::class.java)
+        startActivity(promotionIntent)
     }
 
     private fun navigateToHome() {
@@ -56,18 +78,12 @@ class MainActivity : AppCompatActivity() , NavigationView.OnNavigationItemSelect
     }
 
     private fun navigateToSettings() {
-        val settingsIntent = Intent(this, Activity2::class.java)
-        startActivity(settingsIntent)
+
     }
 
     private fun navigateToAccount() {
         val accountIntent = Intent(this, FacebookLoginActivity::class.java)
         startActivity(accountIntent)
-    }
-
-    private fun openActivity2() {
-        val intent = Intent(this, Activity2::class.java)
-        startActivity(intent)
     }
 
     inline fun consume(f: () -> Unit ):Boolean{

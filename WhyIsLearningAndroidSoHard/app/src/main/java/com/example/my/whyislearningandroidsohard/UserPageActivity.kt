@@ -21,7 +21,12 @@ class UserPageActivity : AppCompatActivity() {
         try {
             user_name_text.text = intent.getStringExtra("name")
             user_email_text.text = intent.getStringExtra("email")
-            user_points_text.text = "0"
+            if(intent.getStringExtra("points").isNullOrEmpty()){
+                user_points_text.text = "0"
+            }
+            else{
+                user_points_text.text = intent.getStringExtra("points")
+            }
             picture = JSONObject(intent.getStringExtra("picture"))
             var url = picture.getJSONObject("data").getString("url")
             var urlfromid = "graph.facebook.com/" + intent.getStringExtra("id") + "/picture?type=large"

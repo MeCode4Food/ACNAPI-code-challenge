@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WhyIsLearningAndroidSoHard</string>
+    <string name="app_name">Skyview Mall</string>
     <string name="journal_default_title">Title</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -8,4 +8,8 @@
     <string name="log_out">Log Out</string>
     <string name="facebook_app_id">1983735488353209</string>
     <string name="dev_localhost">http://127.0.0.1:8080</string>
+    <string name="prod_host">us-cdbr-iron-east-01.cleardb.net</string>
+    <string name="db_user">b2ea602c366f39</string>
+    <string name="db_password">89869375</string>
+    <string name="db_name">heroku_547ab5b52ad2feb</string>
 </resources>

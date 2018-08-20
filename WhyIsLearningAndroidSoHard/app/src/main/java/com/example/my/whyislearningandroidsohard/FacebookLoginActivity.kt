@@ -7,9 +7,9 @@ import kotlinx.android.synthetic.main.activity_fb_log_in.*
 import android.content.Intent
 import android.widget.Toast
 import com.android.volley.Request
-import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.JsonRequest
 import com.android.volley.toolbox.Volley
 import com.facebook.*
 import org.json.JSONObject
@@ -24,7 +24,7 @@ class FacebookLoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fb_log_in)
-        url = getString(R.string.dev_localhost)
+        url = "https://acnapi-code-challenge.herokuapp.com"
         callbackManager = CallbackManager.Factory.create();
         fb_login_button.setReadPermissions("public_profile", "email", "user_birthday")
 
@@ -77,7 +77,7 @@ class FacebookLoginActivity : AppCompatActivity() {
 
         update_button.setOnClickListener({_ -> updateTextHere()})
 
-        if(!AccessToken.getCurrentAccessToken().isExpired()){
+        if((AccessToken.getCurrentAccessToken() == null )|| !AccessToken.getCurrentAccessToken().isExpired()){
             updateTextHere()
         }
     }
@@ -113,13 +113,46 @@ class FacebookLoginActivity : AppCompatActivity() {
 
                 // search database for user. if there exists, retreive points
                 val requestQueue = Volley.newRequestQueue(this)
-
+                println("HEREHEREHERE")
                 val objectRequest = JsonObjectRequest(
                         Request.Method.GET,
                         url + "/api/user?email=" + obj.getString("email"),
                         null,
                         Response.Listener<JSONObject> { response ->
-                            println("response OK")
+                            val result = response["status"].toString()
+                            if(result == "Resource not found"){
+
+                                var jsonObj = JSONObject()
+                                try {
+                                    var data = JSONObject()
+                                    data.put("name", obj.getString("name"))
+                                    data.put("email", obj.getString("email"))
+                                    data.put("points", 3000)
+                                    jsonObj.put("data", data)
+                                    val mRequestBody = jsonObj.toString()
+                                }
+                                catch (e: Exception){
+                                    println(e.toString())
+                                }
+
+                                val addUser = JsonObjectRequest(
+                                        Request.Method.POST,
+                                        url + "/api/user",
+                                        jsonObj ,
+                                        Response.Listener<JSONObject> { response ->
+                                            println(response)
+                                        },
+                                        Response.ErrorListener { response ->
+                                            println("error")
+                                            println(response)
+                                        }
+                                )
+
+                                userPageIntent.putExtra("points", 3000)
+                            }
+                            else{
+                                userPageIntent.putExtra("points", response.getJSONObject("message").getString("points"))
+                            }
                             println(response)
                         },
                         Response.ErrorListener { response ->
